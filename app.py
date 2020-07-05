@@ -5,7 +5,7 @@ import calendar
 import time
 
 app = Flask(__name__)
-model_path = 'starkCache.pkl'
+model_path = './starkCache.pkl'
 device = torch.device("cpu")
 tokenizer = BertTokenizer.from_pretrained('hfl/chinese-roberta-wwm-ext')
 model = torch.load(model_path, map_location=device)
