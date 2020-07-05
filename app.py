@@ -7,10 +7,7 @@ import time
 app = Flask(__name__)
 model_path = './starkCache.pkl'
 device = torch.device("cpu")
-tokenizer = BertTokenizer.from_pretrained('hfl/chinese-roberta-wwm-ext')
-model = BertForQuestionAnswering.from_pretrained('hfl/chinese-roberta-wwm-ext')
-model = torch.load(model_path, map_location=device)
-model = model.to(device)
+
 
 
 @app.route('/')
@@ -77,5 +74,8 @@ def inference_engine(content):
 
 import os
 if __name__ == "__main__":
-    # port = int(os.environ.get('PORT', 5000))
+    tokenizer = BertTokenizer.from_pretrained('hfl/chinese-roberta-wwm-ext')
+    model = BertForQuestionAnswering.from_pretrained('hfl/chinese-roberta-wwm-ext')
+    model = torch.load(model_path, map_location=device)
+    model = model.to(device)
     app.run(port=80)
