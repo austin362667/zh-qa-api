@@ -6,7 +6,7 @@ import time
 
 app = Flask(__name__)
 model_path = './starkCache.pkl'
-device = torch.device("cpu")
+device = torch.device("gpu")
 
 
 
@@ -67,7 +67,7 @@ def inference_engine(content):
     all_tokens = tokenizer.convert_ids_to_tokens(input_ids)
     answer = ''.join(all_tokens[torch.argmax(start_scores) : torch.argmax(end_scores)+1])
     
-    if len(ans) > 15 or len(ans) == 1 or ans == '洗錢':
+    if len(answer) > 15 or len(answer) == 1 or answer == '洗錢':
         answer = ''
 
     return answer
@@ -78,5 +78,5 @@ if __name__ == "__main__":
     model = BertForQuestionAnswering.from_pretrained('hfl/chinese-roberta-wwm-ext')
     model = torch.load(model_path, map_location=device)
     model = model.to(device)
-    app.debug = True
+    # app.debug = True
     app.run(port=80)
