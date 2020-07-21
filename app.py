@@ -6,7 +6,7 @@ import time
 
 app = Flask(__name__)
 model_path = './starkCache.pkl'
-device = torch.device("gpu")
+device = torch.device("cuda")
 
 
 
