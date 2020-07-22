@@ -73,10 +73,10 @@ def inference_engine(content):
     return answer
 
 import os
-# if __name__ == "__main__":
-tokenizer = BertTokenizer.from_pretrained('hfl/chinese-roberta-wwm-ext')
-model = BertForQuestionAnswering.from_pretrained('hfl/chinese-roberta-wwm-ext')
-model = torch.load(model_path, map_location=device)
-model = model.to(device)
-app.debug = True
-app.run(port=80)
+if __name__ == "__main__":
+    tokenizer = BertTokenizer.from_pretrained('hfl/chinese-roberta-wwm-ext')
+    model = BertForQuestionAnswering.from_pretrained('hfl/chinese-roberta-wwm-ext')
+    model = torch.load(model_path, map_location=device)
+    model = model.to(device)
+    app.debug = True
+    app.run(port=80)
