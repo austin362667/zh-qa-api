@@ -56,7 +56,7 @@ def inference_engine(content):
     text = content
     if len(text) > 400:
         text = text[:400]
-    question = """
+    question = u"""
                 洗錢是指將犯罪不法所得，掩飾、隱匿非法金融行為。
                 國內吸金、電信詐騙案件也層出不窮，請問哪些人有可能在洗錢?
             """
