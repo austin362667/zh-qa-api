@@ -41,7 +41,9 @@ def inference():
     print(news)
     server_timestamp = calendar.timegm(time.gmtime())
     answer = []
-    answer.append(inference_engine(news))
+    p = inference_engine(news)
+    if p != "":
+        answer.append(p)
 
     res_json = { "esun_uuid": esun_uuid,"server_uuid": server_uuid,"server_timestamp": server_timestamp,"answer": answer,}
     print(res_json) 
