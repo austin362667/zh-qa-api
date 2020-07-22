@@ -79,4 +79,4 @@ if __name__ == "__main__":
     model = torch.load(model_path, map_location=device)
     model = model.to(device)
     app.debug = True
-    app.run(5000)
+    app.run(port=80)
